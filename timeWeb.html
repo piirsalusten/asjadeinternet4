@@ -56,6 +56,20 @@
 
         <div class="container">
             <canvas id="myChart"></canvas>
+            <div id="numberData">
+                <div id="avgTemp"></div><br>
+                <div id="minTemp"></div><br>
+                <div id="maxTemp"></div><br>
+                <div id="medianTemp"></div><br><br>
+                <div id="avgHeight"></div><br>
+                <div id="minHeight"></div><br>
+                <div id="maxHeight"></div><br>
+                <div id="medianHight"></div><br><br>
+                <div id="avgLight"></div><br>
+                <div id="minLight"></div><br>
+                <div id="maxLight"></div><br>
+                <div id="medianLight"></div><br><br>
+            </div>
         </div>
 
         <script>
@@ -166,8 +180,6 @@
                     lightAvg = lightSum / aLight.length;
                 }
 
-                let dataDiv = document.getElementById('data');
-
                 //Calculate median
 
                 function getMedian(array) {
@@ -183,13 +195,28 @@
                     }
                 }
 
-                let tempMedian = getMedian(aTemps);
-                let waterMedian = getMedian(aWater);
-                let lightMedian = getMedian(aLight);
+                var minTemp = Math.min(...aTemps);
+                var minLight = Math.min(...aLight);
+                var minHeight = Math.min(...aWater);
+                var maxTemp = Math.max(...aTemps);
+                var maxLight = Math.max(...aLight);
+                var maxHeight = Math.max(...aWater);
+                //var tempMedian = median(aTemps);
+                //var lightMedian = median(aLight);
+                //var heightMedian = median(aWater);
 
-                console.log(tempMedian);
-                console.log(waterMedian);
-                console.log(lightMedian);
+                document.getElementById("avgTemp").innerHTML = "Temperatuuri keskmine: " + tempAvg;
+                document.getElementById("maxTemp").innerHTML = "Temperatuuri maksimum: " + maxTemp;
+                document.getElementById("minTemp").innerHTML = "Temperatuuri miinimum: " + minTemp;
+                //document.getElementById("medianTemp").innerHTML = "Temperatuuri mediaan: " + tempMedian;
+                document.getElementById("avgHeight").innerHTML = "Veetaseme keskmine: " + waterAvg;
+                document.getElementById("maxHeight").innerHTML = "Veeteaseme maksimum: " + maxHeight;
+                document.getElementById("minHeight").innerHTML = "Veetaseme miinimum: " + minHeight;
+                //document.getElementById("medianHight").innerHTML = "Veetaseme mediaan: " + heightMedian;
+                document.getElementById("avgLight").innerHTML = "Läbipaistvuse keskmine: " + lightAvg;
+                document.getElementById("minLight").innerHTML = "Läbipaistvuse maksimum: " + maxLight;
+                document.getElementById("maxLight").innerHTML = "Läbipaistvuse miinimum: " + minLight;
+                //document.getElementById("medianLight").innerHTML = "Läbipaistvuse mediaan: " + lightMedian;
                 
                 console.log(aWater);
 
